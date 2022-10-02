@@ -23,16 +23,17 @@ if (!isset($_SESSION["user_id"])) {
         <img src="Images/Header.png" alt="backgorund" class="headerpic">
     </section>
     <div class="logout">
-        <a href="logout.php">??????/Logout</a>
+        <a href="logout.php">लॉगआउट/Logout</a>
     </div>
     <br>
-    <div class="form" style="width:90vw; margin-top:200px;">
+
+    <div class="form" style="width:90vw; margin-top:150px">
 
         <form style=" width:90vw;" method="POST" action="viewapplication.php">
 
             <fieldset style="width:90vw; margin:20px">
-                <legend style="padding: 10px; color: white;text-transform: uppercase; font-size: 1.6em">??? ?????/
-                    ALL Applications</legend>
+                <legend style="padding: 10px; color: white;text-transform: uppercase; font-size: 1.6em">आवेदन/
+                    Training Feedback</legend>
 
                 <input style="float:right; width:100px; height:30px; color:red;" type="reset" value="Clear All Filters">
                 <input style="float:right; width:250px; height:30px;" type="text" id="myInput" onKeyUp="myFunction()"
@@ -46,22 +47,22 @@ if (!isset($_SESSION["user_id"])) {
 
                 <t>
                     <table id="myTable" width="100%" border="1">
-                        <th style="color:#cc0000">????? ??????/<br>Application Id</th>
-                        <th style="color:#cc0000">????? ?? ???/<br>Applicant Name</th>
-                        <th style="color:#cc0000">??/<br>Designation</th>
-                        <th style="color:#cc0000">????/<br>Gender</th>
-                        <th style="color:#cc0000">????????? ??????/<br>Training Title</th>
-                        <th style="color:#cc0000">????????? ??????/<br>Training Type</th>
-                        <th style="color:#cc0000">???? ???? ?? ????/<br>Start Date<br>(YYYY-MM-DD)</th>
-                        <th style="color:#cc0000">????? ????/<br>End Date<br>(YYYY-MM-DD)</th>
-                        <th style="color:#cc0000">????/<br>Duration(Days)</th>
-                        <th style="color:#cc0000">??????/<br>Status</th>
-                        <th style="color:#cc0000">????? ?????/<br>View Application</th>
+                        <th style="color:#cc0000">आवेदन संख्या/<br>Application Id</th>
+                        <th style="color:#cc0000">आवेदक का नाम/<br>Applicant Name</th>
+                        <th style="color:#cc0000">पद/<br>Designation</th>
+                        <th style="color:#cc0000">लिंग/<br>Gender</th>
+                        <th style="color:#cc0000">प्रशिक्षण शीर्षक/<br>Training Title</th>
+                        <th style="color:#cc0000">प्रशिक्षण प्रकार/<br>Training Type</th>
+                        <th style="color:#cc0000">आरंभ करने की तिथि/<br>Start Date<br>(YYYY-MM-DD)</th>
+                        <th style="color:#cc0000">अंतिम तिथि/<br>End Date<br>(YYYY-MM-DD)</th>
+                        <th style="color:#cc0000">अवधि/<br>Duration(Days)</th>
+                        <th style="color:#cc0000">स्थिति/<br>Status</th>
+                        <th style="color:#cc0000">आवेदन देखें/<br>View Application</th>
                 </t>
                 <?php
                 require "conn.php";
                 $query =
-                    "SELECT * from `application` ORDER BY application_id DESC";
+                    "SELECT * from `application` WHERE user_id=$_SESSION[user_id] and director=1 and director_status='RECOMMENDED' or director_status='' ORDER BY application_id DESC";
                 $result = Mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_assoc($result)) { ?>
 
@@ -219,10 +220,116 @@ if (!isset($_SESSION["user_id"])) {
                 </table>
                 <br><br>
                 </legend>
-                <button style="margin-left : 625px" ; name="login">????? ?????/View details</button>
+                <button style="margin-left : 625px" ; name="login">विवरण देखें/View details</button>
             </fieldset>
         </form>
+        <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                uName = tr[i].getElementsByTagName("td")[1];
+                td = tr[i].getElementsByTagName("td")[2];
+                td1 = tr[i].getElementsByTagName("td")[4];
+                td2 = tr[i].getElementsByTagName("td")[5];
+                td3 = tr[i].getElementsByTagName("td")[9];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    txtValue1 = td1.textContent || td1.innerText;
+                    txtValue2 = td2.textContent || td2.innerText;
+                    txtValue3 = td3.textContent || td3.innerText;
+                    txt = uName.textContent || uName.innerText;
+                    txtValue = txtValue + txtValue1 + txt + txtValue2 + txtValue3;
 
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+
+            }
+        }
+
+        function myFunction1() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myGender");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            console.log(filter);
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[3];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) == 0) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+
+            }
+        }
+
+        function myFunction2() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("duration");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[8];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    console.log(filter);
+                    if (txtValue.toUpperCase() == filter || filter == "") {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+
+            }
+        }
+
+        function myFunction3() {
+            var fromdate, val, todate, tab, table, table1, tr, td1, td, i, txtValue;
+            tab = document.getElementById("sdate").value;
+            table1 = document.getElementById("edate").value;
+            fromdate = new Date(tab);
+            todate = new Date(table1);
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            sdate = fromdate;
+            edate = todate;
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[6];
+                td1 = tr[i].getElementsByTagName("td")[7];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    val = td1.textContent || td1.innerText;
+                    sdate = new Date(txtValue);
+                    edate = new Date(val)
+
+                    if (sdate >= fromdate && edate <= todate) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        </script>
     </div>
     <br>
     <div class="footer">
