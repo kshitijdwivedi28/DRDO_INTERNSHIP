@@ -142,6 +142,18 @@ if (!isset($_SESSION["user_id"])) {
                         <label>शुल्क जमा करने की अंतिम तिथि/<br>Last Date of Fee Submission :</label>
                         <input type='date' name='feelastdate' class='form-control' />
                         </div>";
+                echo "<div id='fb_review_id'>
+                <label> प्रशिक्षण प्रतिपुष्टि/Training Feedback :</label>
+                <input type = 'text' name = 'fb_review_name' class = 'form-control' placeholder = 'Enter your feedback of this training' required />
+                </div>";
+                echo "<div>
+                <label>प्रशिक्षण प्रतिपुष्टि रेटिंग/Training Feedback Rating :</label>
+                <input type='Radio' name='fb_rating' value='1'>1
+                <input type='Radio' name='fb_rating' value='2'>2
+                <input type='Radio' name='fb_rating' value='3'>3
+                <input type='Radio' name='fb_rating' value='4'>4
+                <input type='Radio' name='fb_rating' value='5'>5
+                </div>";
                 ?>
                 <br><br>
                 <button onClick="trainingAdded()" ; name="login">फार्म जमा करें/<br>Submit Form</button>
@@ -152,19 +164,19 @@ if (!isset($_SESSION["user_id"])) {
                 </script>
                 </legend>
                 <script>
-                function myChangeFunction(){
-                        table = document.getElementById("sdate").value;
-                        table1 = document.getElementById("edate").value;
-                        fromdate = new Date(table);
-                        todate = new Date(table1);
-                        var total_seconds = (todate - fromdate) / 1000;
-                        if(total_seconds<0){
-                                    document.getElementById("edate").value=null;
-                                    alert("Invalid Date");
-                                }
-                        var days_difference = Math.floor (total_seconds / (60 * 60 * 24));
-                        days_difference ="Duration of training: "+days_difference+" Days";
-                        console.log(days_difference);
+                function myChangeFunction() {
+                    table = document.getElementById("sdate").value;
+                    table1 = document.getElementById("edate").value;
+                    fromdate = new Date(table);
+                    todate = new Date(table1);
+                    var total_seconds = (todate - fromdate) / 1000;
+                    if (total_seconds < 0) {
+                        document.getElementById("edate").value = null;
+                        alert("Invalid Date");
+                    }
+                    var days_difference = Math.floor(total_seconds / (60 * 60 * 24));
+                    days_difference = "Duration of training: " + days_difference + " Days";
+                    console.log(days_difference);
                 };
                 var radioButtons = Array.from(document.querySelectorAll("input[type='radio']"));
                 var selectButtons = Array.from(document.querySelectorAll("select"));
