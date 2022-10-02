@@ -1,0 +1,42 @@
+<section id="home">
+    <div class ="header-drdo">
+         <img src="Images/logo_header.png" alt="submit"/>
+    </div>
+    <div class ="header-cfees">
+         <img src="Images/logo_header.png" alt="submit"/>
+    </div>
+    <div class ="Home-header">
+        <h1 align='center' style="color:darkblue;">अग्नि, पर्यावरण तथा विस्फोटक सुरक्षा केंद</h1>
+        <h2 align='center' style="color:darkblue;">Centre for Fire, Explosive and Environment Safety (CFEES)<h2>
+    </div>
+</section>
+
+
+<-----------CSS-------------->
+
+#home{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding: 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.05)
+
+}
+.Home-Header{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+}
+.header-drdo{
+    position:absolute;
+    left:250px;
+    top:15px;
+}
+.header-cfees{
+    position:absolute;
+    right: 250px;
+    top:15px;
+}

@@ -1,0 +1,142 @@
+body {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:50px auto;
+}
+
+
+ div {
+    margin-bottom: 10px;
+  }
+label {
+    display: inline-block;
+    width: 350px;
+    text-align: left;
+  }
+
+ 
+textarea {
+    min-height: 8em;
+    min-width: 100%;
+    padding: .5em;
+    border: solid 1px #999;
+ }
+input[type='submit']{
+    padding: .5em 1em;
+    border-radius:6px;
+    background-color:#333;
+    color:rgb(24, 22, 22);
+    font-family:'Lato', sans-serif;
+    font-size: .8em;
+}
+input[type="date"]{
+    cursor: pointer;
+}
+button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color:#000000;
+    padding: .4em;
+    width:150px;
+    color: #fff;
+    border-radius: 10px;
+   
+}
+
+@media screen and (min-width: 600px) {
+    legend{
+        font-size: 1.em;
+        background: rgb(104, 100, 109);
+        
+
+    }
+    fieldset{
+        width: 60%;
+        min-width: 800px;
+        color:rgb(0, 0, 0);
+        border:1px solid #999;
+	    border-radius:8px;
+	    box-shadow:0   0 100px rgb(152, 152, 152);
+        border-color: #333;
+        background-color: rgb(205, 199, 199);
+        
+        
+    }
+    .checks label{
+        display: inline-block;
+        padding-top: .5em;
+        margin-top: .5em;
+        margin-right: .5em;
+    }
+}
+select {
+    appearance: none;
+    outline: 0;
+    background: rgb(255, 255, 255);
+    background-image: none;
+    width: 26%;
+    height: 100%;
+    color: black;
+    cursor: pointer;
+    border: solid 1px rgb(0, 0, 0);
+    padding: .4em;
+    margin-top:5px;
+    margin-right: 40px;
+}
+ 
+.select {
+    position: relative;
+    display: block;
+    width: 15em;
+    height: 10em;
+    line-height: 3;
+    overflow: hidden;
+    border-radius: .25em;
+    padding-bottom: 10px;
+}
+
+.form-control {width: 200px; height: 20px}
+
+.background{
+   
+    position: fixed;
+    z-index: -8;
+    width:100%; 
+    height:160%;
+    
+}
+#home{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding: 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.05)
+
+}
+.Home-Header{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+}
+.header-drdo{
+    position:absolute;
+    left:250px;
+    top:15px;
+}
+.header-cfees{
+    position:absolute;
+    right: 250px;
+    top:15px;
+}
+.headerpic{
+    max-width: 1500px;
+    max-height: 150px;
+}
+.header{
+    width: 1500;
+    
+}
