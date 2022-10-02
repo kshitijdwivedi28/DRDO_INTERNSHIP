@@ -62,8 +62,17 @@ if (!isset($_SESSION["user_id"])) {
                 <?php
                 require "conn.php";
                 $query =
-                    "SELECT * from `application` WHERE user_id=$_SESSION[user_id] and director=1 and director_status='RECOMMENDED' or director_status='' ORDER BY application_id DESC";
-                $result = Mysqli_query($conn, $query);
+                    // "SELECT * from `application` WHERE user_id=$_SESSION[user_id] and director=1 and director_status='RECOMMENDED' or director_status='' ORDER BY application_id DESC";
+                    // Query to get the data of applicants who have completed their training but haven't provided feedback
+                    "SELECT * from `application` 
+                    WHERE user_id = (SELECT user_id 
+                                    FROM `training_details`  
+                                    WHERE is_confirmed = 'YES' 
+                                          AND is_feedback = 'no' 
+                                          AND end_date <= curdate()
+                                          AND user_id = $_SESSION[user_id])
+                    ORDER BY application_id DESC";
+                    $result = Mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_assoc($result)) { ?>
 
                 <?php
