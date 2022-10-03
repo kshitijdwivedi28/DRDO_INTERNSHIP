@@ -30,8 +30,8 @@ if (!isset($_SESSION["user_id"])) {
     <div class="logout">
         <a href="logout.php">लॉगआउट/Logout</a>
     </div>
-	<div class="back">
-		<a href="index.php">Back</a>
+    <div class="back">
+        <a href="index.php">Back</a>
     </div>
     <br><br>
     <div class="form">
@@ -137,9 +137,13 @@ if (!isset($_SESSION["user_id"])) {
         <input type='date' name='Dateofbirth' class='form-control' required />
         </div>";
                 echo "<div>
-                <label>ईमेलआईडी/Email ID :</label>
-                <input type='text' name='EmailId' class='form-control' placeholder='Enter your Email id' required/>
+                <label>इंटरनेट ईमेल आईडी/Internet Email ID :</label>
+                <input type='text' name='internet_email_id' class='form-control' placeholder='Enter your Internet Email ID' required/>
        </div>";
+                echo "<div>
+                            <label>द्रोणा ईमेल आईडी/DRONA Email ID :</label>
+                            <input type='text' name='drona_email_id' class='form-control' placeholder='Enter your DRONA Email ID'/>
+                </div>";
                 echo "<div>
        <label>मोबाइल नंबर/Mobile Number :</label>
       <input type='text' name='MobileNo' class='form-control' placeholder='Enter your Mobile Number' required/>
@@ -249,21 +253,21 @@ if (!isset($_SESSION["user_id"])) {
                         </div>";
                 ?>
                 <script>
-                        function myChangeFunction(){
-                                table = document.getElementById("sdate").value;
-                                table1 = document.getElementById("edate").value;
-                                fromdate = new Date(table);
-                                todate = new Date(table1);
-                                var total_seconds = (todate - fromdate) / 1000;
-                                if(total_seconds<0){
-                                    document.getElementById("edate").value=null;
-                                    alert("Invalid Date");
-                                }
-                                var days_difference = Math.floor (total_seconds / (60 * 60 * 24));
-                                days_difference ="Duration of training: "+days_difference+" Days";
-                                console.log(days_difference);
-                                //document.getElementById("duration").innerHTML=days_difference;
-                        };
+                function myChangeFunction() {
+                    table = document.getElementById("sdate").value;
+                    table1 = document.getElementById("edate").value;
+                    fromdate = new Date(table);
+                    todate = new Date(table1);
+                    var total_seconds = (todate - fromdate) / 1000;
+                    if (total_seconds < 0) {
+                        document.getElementById("edate").value = null;
+                        alert("Invalid Date");
+                    }
+                    var days_difference = Math.floor(total_seconds / (60 * 60 * 24));
+                    days_difference = "Duration of training: " + days_difference + " Days";
+                    console.log(days_difference);
+                    //document.getElementById("duration").innerHTML=days_difference;
+                };
                 var radioButtons = Array.from(document.querySelectorAll("input[type='radio']"));
                 var selectButtons = Array.from(document.querySelectorAll("select"));
                 selectButtons.forEach(function(btn) {
