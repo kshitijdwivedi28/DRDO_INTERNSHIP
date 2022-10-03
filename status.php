@@ -51,17 +51,14 @@ if (!isset($_SESSION["user_id"])) {
             <fieldset style="width:90vw; margin:20px">
                 <legend style="padding: 10px; color: white;text-transform: uppercase; font-size: 1.6em">सभी आवेदन/
                     ALL Applications</legend>
-
-                <input style="float:right; width:100px; height:30px; color:red;" type="reset" value="Clear All Filters">
+            
                 <input style="float:right; width:250px; height:30px;" type="text" id="myInput" onKeyUp="myFunction()"
                     placeholder="User name, Training name, Training Type">
                 <input style="float:right; width:100px; height:30px;" type="text" id="myGender" onKeyUp="myFunction1()"
                     placeholder="Gender">
                 <input style="float:right; width:100px; height:30px;" type="text" id="duration" onKeyUp="myFunction2()"
                     placeholder="Duration">
-                <input style="float:right; width:100px; height:30px;" type="date" id="edate" onChange="myFunction3()">
-                <input style="float:right; width:100px; height:30px;" type="date" id="sdate">
-
+              
                 <t>
                     <table id="myTable" width="100%" border="1">
                         <th style="color:#cc0000">आवेदन संख्या/<br>Application Id</th>
@@ -70,8 +67,8 @@ if (!isset($_SESSION["user_id"])) {
                         <th style="color:#cc0000">लिंग/<br>Gender</th>
                         <th style="color:#cc0000">प्रशिक्षण शीर्षक/<br>Training Title</th>
                         <th style="color:#cc0000">प्रशिक्षण प्रकार/<br>Training Type</th>
-                        <th style="color:#cc0000">आरंभ करने की तिथि/<br>Start Date<br>(YYYY-MM-DD)</th>
-                        <th style="color:#cc0000">अंतिम तिथि/<br>End Date<br>(YYYY-MM-DD)</th>
+                        <th style="color:#cc0000">आरंभ करने की तिथि/<br>Start Date<br>(DD-MM-YYYY)</th>
+                        <th style="color:#cc0000">अंतिम तिथि/<br>End Date<br>(DD-MM-YYYY)</th>
                         <th style="color:#cc0000">अवधि/<br>Duration(Days)</th>
                         <th style="color:#cc0000">स्थिति/<br>Status</th>
                         <th style="color:#cc0000">आवेदन देखें/<br>View Application</th>
@@ -153,8 +150,8 @@ if (!isset($_SESSION["user_id"])) {
                     <td style="text-align: center;"><?php echo $fetch["gender"]; ?></td>
                     <td style="text-align: center;"><?php echo $fetch["training_details"]; ?></td>
                     <td style="text-align: center;"><?php echo $fetch["training_type"]; ?></td>
-                    <td style="text-align: center;"><?php echo $fetch["start_date"]; ?></td>
-                    <td style="text-align: center;"><?php echo $fetch["end_date"]; ?></td>
+                    <td style="text-align: center;"><?php echo date("d-m-Y", strtotime($fetch["start_date"])); ?></td>
+                    <td style="text-align: center;"><?php echo date("d-m-Y", strtotime($fetch["end_date"])); ?></td>
                     <td style="text-align: center;"><?php echo $fetch["duration"]; ?></td>
                     <td style="text-align: center;"><?php
                     if($row['director']==1 && $row['director_status']=="RECOMMENDED"){
@@ -181,8 +178,8 @@ if (!isset($_SESSION["user_id"])) {
                     <td style="text-align: center;"><?php echo $fetch["gender"]; ?></td>
                     <td style="text-align: center;"><?php echo $fetch["training_details"]; ?></td>
                     <td style="text-align: center;"><?php echo $fetch["training_type"]; ?></td>
-                    <td style="text-align: center;"><?php echo $fetch["start_date"]; ?></td>
-                    <td style="text-align: center;"><?php echo $fetch["end_date"]; ?></td>
+                    <td style="text-align: center;"><?php echo date("d-m-Y", strtotime($fetch["start_date"])); ?></td>
+                    <td style="text-align: center;"><?php echo date("d-m-Y", strtotime($fetch["end_date"])); ?></td>
                     <td style="text-align: center;"><?php echo $fetch["duration"]; ?></td>
                     <td style="text-align: center;"><?php
                     if($row['director']==1 && $row['director_status']=="RECOMMENDED"){
@@ -209,8 +206,8 @@ if (!isset($_SESSION["user_id"])) {
                     <td style="text-align: center;"><?php echo $fetch["gender"]; ?></td>
                     <td style="text-align: center;"><?php echo $fetch["training_details"]; ?></td>
                     <td style="text-align: center;"><?php echo $fetch["training_type"]; ?></td>
-                    <td style="text-align: center;"><?php echo $fetch["start_date"]; ?></td>
-                    <td style="text-align: center;"><?php echo $fetch["end_date"]; ?></td>
+                    <td style="text-align: center;"><?php echo date("d-m-Y", strtotime($fetch["start_date"])); ?></td>
+                    <td style="text-align: center;"><?php echo date("d-m-Y", strtotime($fetch["end_date"])); ?></td>    
                     <td style="text-align: center;"><?php echo $fetch["duration"]; ?></td>
                     <td style="text-align: center;"><?php
                     if($row['director']==1 && $row['director_status']=="RECOMMENDED"){
@@ -241,6 +238,10 @@ if (!isset($_SESSION["user_id"])) {
             </fieldset>
         </form>
         <script>
+        function clear(){
+            console.log("hsadaksd");
+            window.location='status.php';
+        }
         function myFunction() {
             // Declare variables
             var input, filter, table, tr, td, i, txtValue;
