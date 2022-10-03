@@ -434,6 +434,7 @@ if (isset($_SESSION["user_id"])) {
 //     }
 // } 
     echo "<hr><hr><br>";
+    echo "<input type = 'hidden' name='application' value =$application_id  class = 'hidden' />";
     echo "<div id='fb_review_id'>
     <label> प्रशिक्षण प्रतिपुष्टि/Training Feedback :</label>
     <input type = 'text' name = 'fb_review_name' class = 'form-control' placeholder = 'Enter your feedback of this training' required />
