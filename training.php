@@ -104,7 +104,7 @@ if (!isset($_SESSION["user_id"])) {
                         <input type='date' id='edate' name='trainingenddetails' onchange='myChangeFunction()' class='form-control'required />
                         </div>";
 
-                echo "<div>
+                echo "<div id='paper_title'>
                          <label>क्या आप पत्र/पेपर प्रस्तुति के लिए जा रहे हैं?<br>Are you going for Paper presentation? :</label>
                          <input type='Radio' name='Researchpaper' value='YES'>हां/YES
                          <input type='Radio' name='Researchpaper' value='NO' checked='checked'>नहीं/NO
@@ -191,13 +191,16 @@ if (!isset($_SESSION["user_id"])) {
 
                 function selectWithText() {
                     var other = document.getElementById('others');
-
+                    var check = document.getElementById('paper_title');
                     if (this.value === 'others') {
-                        console.log(5);
                         other.classList.remove("hidden");
-                    } else {
-                        console.log(1);
+                    } 
+                    else if(this.value === 'Confrence' || this.value==='Exhibition' ||this.value==='Symposium'){
+                        check.classList.remove("hidden");
+                    }
+                    else {
                         other.classList.add("hidden");
+                        check.classList.add("hidden");
                     }
                 }
 
