@@ -36,12 +36,14 @@ if (isset($_SESSION["user_id"])) {
     $org_institute = $_POST["orgname"];
     $institute_address = $_POST["orgloc"];
     $training_mode = $_POST["trainingmode"];
-    $mobile_no = $_POST["MobileNo"];
-    $dob = $_POST["Dateofbirth"];
-    $pin_dop_pis = $_POST["pin"];
-    $drona_email_id = $_POST["EmailId"];
-    $gender = $fetch["gen"];
-    $qualification = $_POST["qualification"];
+    // $mobile_no = $_POST["MobileNo"];
+    // $dob = $_POST["Dateofbirth"];
+    // $pin_dop_pis = $_POST["pin"];
+    // $drona_email_id = $_POST["EmailId"];
+    // $gender = $fetch["gen"];
+    // $qualification = $_POST["qualification"];
+    $fb_review_name = $_POST["fb_review_name"];
+    $fb_rating = $_POST["fb_rating"];
     $research_paper = $_POST["Researchpaper"];
     $title_of_paper = $_POST["titleofpaper"];
     $paper_submitted = $_POST["papersubmited"];
@@ -51,16 +53,25 @@ if (isset($_SESSION["user_id"])) {
     $payable_at = $_POST["Payableat"];
     $last_date_free_submit = $_POST["feelastdate"];
     $con = new mysqli("localhost", "root", "", "cfees");
-    $sql = "INSERT INTO training_details 
-    (user_id, training_title, training_details, training_type, training_type_detail, start_date,
-    end_date, org_institute, institute_address, training_mode, mobile_no, dob, pin_dop_pis,
-    drona_email_id, gender, qualification, research_paper, title_of_paper, paper_submitted,
-    training_fee, amount, cheque_in_favour, payable_at, last_date_fee_submission, is_confirmed)
-    VALUES ($user_id, '$training_title', '$training_details', '$training_type', '$training_type_detail',
-    '$start_date', '$end_date', '$org_institute', '$institute_address', '$training_mode', '$mobile_no', '$dob',
-    '$pin_dop_pis', '$drona_email_id', '$gender', '$qualification', '$research_paper', '$title_of_paper',
-    '$paper_submitted', '$training_fee', $amount, '$cheque_in_favor', '$payable_at', '$last_date_free_submit',
-    'YES');";
+    if($last_date_free_submit==NULL){
+        $sql = "INSERT INTO training_details 
+        (user_id, training_title, training_details, training_type, training_type_detail, start_date,
+        end_date, org_institute, institute_address, training_mode, research_paper, title_of_paper, paper_submitted,
+        training_fee, amount, cheque_in_favour, payable_at, is_confirmed,is_feedback,feedback,feedback_rating)
+        VALUES ($user_id, '$training_title', '$training_details', '$training_type', '$training_type_detail',
+        '$start_date', '$end_date', '$org_institute', '$institute_address', '$training_mode', '$research_paper', '$title_of_paper',
+        '$paper_submitted', '$training_fee', $amount, '$cheque_in_favor', '$payable_at', 'YES','YES','$fb_review_name','$fb_rating');";    
+    }
+    else{
+        $sql = "INSERT INTO training_details 
+        (user_id, training_title, training_details, training_type, training_type_detail, start_date,
+        end_date, org_institute, institute_address, training_mode, research_paper, title_of_paper, paper_submitted,
+        training_fee, amount, cheque_in_favour, payable_at, last_date_fee_submission, is_confirmed,is_feedback,feedback,feedback_rating)
+        VALUES ($user_id, '$training_title', '$training_details', '$training_type', '$training_type_detail',
+        '$start_date', '$end_date', '$org_institute', '$institute_address', '$training_mode', '$research_paper', '$title_of_paper',
+        '$paper_submitted', '$training_fee', $amount, '$cheque_in_favor', '$payable_at', '$last_date_free_submit',
+        'YES','YES','$fb_review_name','$fb_rating');";    
+    }
     if ($con->query($sql) == true) {
         header("location:form.php");
     } else {
