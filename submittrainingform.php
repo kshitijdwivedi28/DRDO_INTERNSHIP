@@ -39,7 +39,7 @@ if (isset($_SESSION["user_id"])) {
     // $mobile_no = $_POST["MobileNo"];
     // $dob = $_POST["Dateofbirth"];
     // $pin_dop_pis = $_POST["pin"];
-    // $drona_email_id = $_POST["internet_email_id"];
+    // $internet_email_id = $_POST["internet_email_id"];
     // $gender = $fetch["gen"];
     // $qualification = $_POST["qualification"];
     $fb_review_name = $_POST["fb_review_name"];

@@ -31,10 +31,11 @@ if (isset($_SESSION["user_id"])) {
 
     echo "<h2>आवेदन संख्या/Application No : $application_id </h2>";
     ?>
-    <form method="POST" action="feedbackaction.php">
-        <fieldset>
-            <legend style="padding: 10px; color: white; text-transform: uppercase; font-size: 1.6em">.............</legend>
-            <?php
+        <form method="POST" action="feedbackaction.php">
+            <fieldset>
+                <legend style="padding: 10px; color: white; text-transform: uppercase; font-size: 1.6em">.............
+                </legend>
+                <?php
             require "conn.php";
             $query5 = mysqli_query(
                 $conn,
@@ -58,7 +59,8 @@ if (isset($_SESSION["user_id"])) {
             $mobileNo = $fetch6["mobile_no"];
             $dob = $fetch6["dob"];
             $pin = $fetch6["pin_dop_pis"];
-            $emailID = $fetch6["drona_email_id"];
+            $internet_email_id = $fetch6["internet_email_id"];
+            $drona_email_id = $fetch6["drona_email_id"];
             $gender = $fetch6["gender"];
             $qualification = $fetch6["qualification"];
             $research_paper = $fetch6["research_paper"];
@@ -170,10 +172,16 @@ if (isset($_SESSION["user_id"])) {
                         <input type='hidden' name='training_details' class='form-control' placeholder='$pin' disabled />
                         </div>";
             echo "<div>
-                        <label>ईमेल आईडी/Email ID : </label>" .
-                $emailID .
+                        <label>इंटरनेट ईमेल आईडी/Internet Email ID : </label>" .
+                $internet_email_id .
                 "
-                        <input type='hidden' name='training_details' class='form-control' placeholder='$emailID' disabled />
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$internet_emailID' disabled />
+                        </div>";
+            echo "<div>
+                        <label>द्रोणा ईमेल आईडी/DRONA Email ID : </label>" .
+                $drona_email_id.
+                "
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$drona_emailID' disabled />
                         </div>";
             echo "<div>
                         <label>लिंग/Gender : </label>" .
@@ -441,8 +449,8 @@ if (isset($_SESSION["user_id"])) {
     echo "<br><br>
     <button name='login'>जमा करें/<br>submit</button>";
 ?>
-        </fieldset>
-</form>
+            </fieldset>
+        </form>
 
 
 
