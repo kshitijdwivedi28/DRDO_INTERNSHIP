@@ -8,7 +8,7 @@ if (!isset($_SESSION["user_id"])) {
 require_once "conn.php";
 if (isset($_SESSION["user_id"])) {
     $application = $_POST["application"];
-    echo "$application";
+   // echo "$application";
     $fb_review = $_POST["fb_review_name"];
     $fb_rating = $_POST["fb_rating"];
     $con = new mysqli("localhost", "root", "", "cfees");

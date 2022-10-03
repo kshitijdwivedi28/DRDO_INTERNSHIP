@@ -40,6 +40,23 @@ if (!isset($_SESSION["user_id"])) {
 
                 <?php
                 require "conn.php";
+       
+                $query ="SELECT COUNT(*)as cnt from `application` 
+                    WHERE training_id IN (SELECT training_id
+                            FROM `training_details`  
+                            WHERE is_confirmed = 'YES' 
+                                AND is_feedback = 'no' 
+                                AND end_date <= curdate()
+                                AND user_id = $_SESSION[user_id]) 
+                                AND director_status='RECOMMENDED'
+                    ORDER BY application_id DESC";
+                    $result = mysqli_query($conn, $query);
+                    $data=mysqli_fetch_assoc($result);
+                $val =  ((int)$data['cnt']);
+
+                if($val>0){
+                    echo "<script>window.location='feedback.php'</script>";
+                }
                 ($query = mysqli_query(
                     $conn,
                     "SELECT * FROM `id_emp` WHERE  `id`='$_SESSION[user_id]'"
@@ -281,13 +298,15 @@ if (!isset($_SESSION["user_id"])) {
 
                 function selectWithText() {
                     var other = document.getElementById('others');
-
+                    var check = document.getElementById('paper_title');
                     if (this.value === 'others') {
-                        console.log(5);
                         other.classList.remove("hidden");
+                    } else if (this.value === 'Confrence' || this.value === 'Exhibition' || this.value ===
+                        'Symposium') {
+                        check.classList.remove("hidden");
                     } else {
-                        console.log(1);
                         other.classList.add("hidden");
+                        check.classList.add("hidden");
                     }
                 }
 

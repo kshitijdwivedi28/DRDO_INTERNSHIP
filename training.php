@@ -193,13 +193,15 @@ if (!isset($_SESSION["user_id"])) {
 
                 function selectWithText() {
                     var other = document.getElementById('others');
-
+                    var check = document.getElementById('paper_title');
                     if (this.value === 'others') {
-                        console.log(5);
                         other.classList.remove("hidden");
+                    } else if (this.value === 'Confrence' || this.value === 'Exhibition' || this.value ===
+                        'Symposium') {
+                        check.classList.remove("hidden");
                     } else {
-                        console.log(1);
                         other.classList.add("hidden");
+                        check.classList.add("hidden");
                     }
                 }
 
