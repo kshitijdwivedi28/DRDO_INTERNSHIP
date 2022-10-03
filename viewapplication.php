@@ -106,6 +106,10 @@ if (isset($_SESSION["user_id"])) {
             $tcpadreview = $fetch5["ad_tcp_hr_status"];
             $director = $fetch5["director"];
             $directorreview = $fetch5["director_status"];
+            $fb = $fetch6["is_feedback"];
+            $fb_review = $fetch6["feedback"];
+            $fb_rating = $fetch6["feedback_rating"];
+            
 
             if ($adstatus == 0) {
                 echo "<br><br><b>आवेदन की स्थिति/Status of the Application : Pending for reviewal of Group AD.</b><br><br><br> </style>";
@@ -455,7 +459,18 @@ ORDER BY `end_date` DESC  LIMIT 5 ";
             }
         }
     }
-} ?>
+    if($fb=="yes"){
+    echo "<hr><br><span style='color:red;'> फीडबैक/Feedback  : " .
+    "<br></span>";
+    echo "फीडबैक टिप्पणी/Feedback Comment : " .
+    $fb_review .
+    "<br>";
+    echo "फीडबैक रेटिंग/Feedback Rating(out of 5) : " .
+    $fb_rating .
+    "<br><br><hr><br><br>"; 
+    }
+    } 
+?>
         </fieldset>
 
 
