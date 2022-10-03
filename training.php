@@ -37,6 +37,7 @@ if (!isset($_SESSION["user_id"])) {
                 <legend style="padding: 10px; color: white; text-transform: uppercase; font-size: 1.6em;">पिछला
                     प्रशिक्षण जोड़ें/Add previous training</legend>
                 <?php
+                echo "<h4 style = 'color : #dd3300'> * marked fields are compulsory </h4><hr>";
                 require "conn.php";
                 ($query = mysqli_query(
                     $conn,
@@ -47,24 +48,25 @@ if (!isset($_SESSION["user_id"])) {
 
                 echo "<br><br>
                 <div style = 'display : none'>
-                        <label>लिंग/Gender :</label>
+                        <label>लिंग/Gender :<span style = 'color : red'>*</span></label>
                         <input type='text' name='grpname' class='form-control' placeholder='$gender' disabled />
                 </div>";
 
                 echo "<div>
-                <label>प्रशिक्षण शीर्षक/Training Title :</label>
+                <label>प्रशिक्षण शीर्षक/Training Title :<span style = 'color : red'>*</span></label>
                 <input type='text' name='training_title' class='form-control' placeholder='Enter The Training Name' required />
                 </div>";
                 echo "<div>
-                <label>प्रशिक्षण विवरण/Training Description :</label>
+                <label>प्रशिक्षण विवरण/Training Description :<span style = 'color : red'>*</span></label>
                 <input type='text' name='training_details' class='form-control' placeholder='Enter the Training Details' required />
                 </div>";
 
                 echo "<div>
-                <label>प्रशिक्षण प्ररूप/Training Type :</label>
+                <label>प्रशिक्षण प्ररूप/Training Type :<span style = 'color : red'>*</span></label>
                 <select name='trainingtype' id='Type of operation'>
                 <option value='Webinar'>Webinar</option>
                 <option value='Workshop'>Workshop</option>
+                <option value='Exhibition'>Exhibition</option>
                 <option value='MDP'>MDP</option>
                 <option value='CEP'>CEP</option>
                 <option value='Training'>Training</option>
@@ -75,79 +77,79 @@ if (!isset($_SESSION["user_id"])) {
                 </select>
                 </div>";
                 echo "<div  id='others'  class='hidden'>
-                <label>प्रशिक्षण विवरण/Training Type (if others) :</label>
+                <label>प्रशिक्षण विवरण/Training Type (if others) :<span style = 'color : red'>*</span></label>
                 <input type='text' name='training_type_details' class='form-control' placeholder='Enter the Training Type'/>
                 </div>";
 
                 echo "<div>
-                <label>प्रशिक्षण प्रणाली/Training Mode :</label>
+                <label>प्रशिक्षण प्रणाली/Training Mode :<span style = 'color : red'>*</span></label>
                 <select name='trainingmode' id='Mode of operation'>
                 <option value='offline'>Offline</option>
                 <option value='online'>Online</option>
                 </select>
                 </div>";
                 echo "<div>
-                <label>आयोजक संस्थान/Organizing Insititute:</label>
+                <label>आयोजक संस्थान/Organizing Insititute:<span style = 'color : red'>*</span></label>
                 <input type='text' name='orgname' class='form-control' placeholder='Enter the Organizing Institute Name' required />
                 </div>";
                 echo "<div>
-                <label>संस्थान का पता/Institute Address :</label>
+                <label>संस्थान का पता/Institute Address :<span style = 'color : red'>*</span></label>
                 <input type='text' name='orgloc' class='form-control' placeholder='Address of the Institute' required />
                 </div>";
 
                 echo "<div>
-                         <label>आरंभ तिथि/From Date :</label>
+                         <label>आरंभ तिथि/From Date :<span style = 'color : red'>*</span></label>
                         <input type='date' id='sdate' name='trainingstartdetails' class='form-control' required />
                         </div>";
                 echo "<div>
-                        <label>अंतिम तिथि/To Date :</label>
+                        <label>अंतिम तिथि/To Date :<span style = 'color : red'>*</span></label>
                         <input type='date' id='edate' name='trainingenddetails' onchange='myChangeFunction()' class='form-control'required />
                         </div>";
 
-                echo "<div id='paper_title'>
-                         <label>क्या आप पत्र/पेपर प्रस्तुति के लिए जा रहे हैं?<br>Are you going for Paper presentation? :</label>
+                echo "<div>
+                         <label>क्या आप पत्र/पेपर प्रस्तुति के लिए जा रहे हैं?<br>Are you going for Paper presentation? :<span style = 'color : red'>*</span></label>
                          <input type='Radio' name='Researchpaper' value='YES'>हां/YES
                          <input type='Radio' name='Researchpaper' value='NO' checked='checked'>नहीं/NO
                          </div>";
                 echo "<div id='papertitle' class='hidden'>
-                         <label>पत्र का शीर्षक/Title Of Paper:</label>
+                         <label>पत्र का शीर्षक/Title Of Paper:<span style = 'color : red'>*</span></label>
                          <input type='name' name='titleofpaper' class='form-control' placeholder='Enter the Title of your Paper'  />
                          </div>";
-                echo "<div  id='papersubmit' class='hidden'>
-                         <label>क्या पत्र जमा किया गया?/Is Paper Submitted? :</label>
+                echo "<div  id='papersubmit' class='hidden' >
+                         <label>पत्र प्रस्तुति मोड/Mode of Paper Presentation :<span style = 'color : red'>*</span></label>
                         <select name='papersubmited' id='Mode of operation'>
-                        <option value='No'>नहीं/NO</option>
-                        <option value='yes'>हां/YES</option>
+                        <option value='NO'>मौखिक/Oral</option>
+                        <option value='YES'>पोस्टर/Poster</option> 
                          </select>
                          </div>";
 
                 echo "<div>
-                        <label>क्या पंजीकरण शुल्क है?/Whether Registration Fee? :</label>
+                        <label>क्या पंजीकरण शुल्क है?/Whether Registration Fee? :<span style = 'color : red'>*</span></label>
                         <input type='Radio' name='fee' value='yes'>हां/YES
                         <input type='Radio' name='fee' value='no'  checked='checked'>नहीं/NO
                         </div>";
                 echo "<div id='feeamount' class='hidden'>
-                        <label>शुल्क (जीएसटी सहित)/Fees (GST Included) :</label>
+                        <label>शुल्क (जीएसटी सहित)/Fees (GST Included) :<span style = 'color : red'>*</span></label>
                         <input type='float' name='feeamount' class='form-control' value =0 size='50'/>
                         </div>";
                 echo "<div  id='checkinfavor'  class='hidden'>
-                        <label>के पक्ष में चेक/Cheque in favour :</label>
+                        <label>के पक्ष में चेक/Cheque in favour :<span style = 'color : red'>*</span></label>
                         <input type='name' name='chequeinfavour' class='form-control' placeholder='Cheque in favour of' />
                         </div>";
                 echo "<div  id='payableat'  class='hidden'>
-                        <label>पर देय/Payable at :</label>
+                        <label>पर देय/Payable at :<span style = 'color : red'>*</span></label>
                         <input type='name' name='Payableat' class='form-control' placeholder='Payable at' />
                         </div>";
                 echo "<div  id='ldate'  class='hidden'>
-                        <label>शुल्क जमा करने की अंतिम तिथि/<br>Last Date of Fee Submission :</label>
+                        <label>शुल्क जमा करने की अंतिम तिथि/<br>Last Date of Fee Submission :<span style = 'color : red'>*</span></label>
                         <input type='date' name='feelastdate' class='form-control' />
                         </div>";
                 echo "<div id='fb_review_id'>
-                <label> प्रशिक्षण प्रतिपुष्टि/Training Feedback :</label>
+                <label> प्रशिक्षण प्रतिपुष्टि/Training Feedback :<span style = 'color : red'>*</span></label>
                 <input type = 'text' name = 'fb_review_name' class = 'form-control' placeholder = 'Enter your feedback of this training' required />
                 </div>";
                 echo "<div>
-                <label>प्रशिक्षण प्रतिपुष्टि रेटिंग/Training Feedback Rating :</label>
+                <label>प्रशिक्षण प्रतिपुष्टि रेटिंग/Training Feedback Rating :<span style = 'color : red'>*</span></label>
                 <input type='Radio' name='fb_rating' value='1'>1
                 <input type='Radio' name='fb_rating' value='2'>2
                 <input type='Radio' name='fb_rating' value='3'>3
@@ -194,11 +196,10 @@ if (!isset($_SESSION["user_id"])) {
                     var check = document.getElementById('paper_title');
                     if (this.value === 'others') {
                         other.classList.remove("hidden");
-                    } 
-                    else if(this.value === 'Confrence' || this.value==='Exhibition' ||this.value==='Symposium'){
+                    } else if (this.value === 'Confrence' || this.value === 'Exhibition' || this.value ===
+                        'Symposium') {
                         check.classList.remove("hidden");
-                    }
-                    else {
+                    } else {
                         other.classList.add("hidden");
                         check.classList.add("hidden");
                     }
