@@ -33,7 +33,8 @@ if (isset($_SESSION["user_id"])) {
     ?>
         <form method="POST" action="feedbackaction.php">
             <fieldset>
-                <legend style="padding: 10px; color: white; text-transform: uppercase; font-size: 1.6em">.............
+                <legend style="padding: 10px; color: white; text-transform: uppercase; font-size: 1.6em">प्रतिपुष्टि दें
+                    / SUBMIT FEEDBACK
                 </legend>
                 <?php
             require "conn.php";
@@ -134,7 +135,7 @@ if (isset($_SESSION["user_id"])) {
             // } elseif ($director == 1 && $directorreview == "NOT RECOMMENDED") {
             //     echo "<br><br><b>आवेदन की स्थिति/Status of the Application : Rejected by Director.</b><br><br><br>";
             // }
-            echo "<br><br><br>";
+            echo "<br>";
             echo "<div>
                         <label>आवेदक का नाम/Applicant Name : </label>" .
                 $name1 .
@@ -304,7 +305,7 @@ if (isset($_SESSION["user_id"])) {
                         <input type='hidden' name='training_details' class='form-control' placeholder='$payable' disabled />
                         </div>";
                 echo "<div>
-                        <label>शुल्क जमा करने की अंतिम तिथि/Last Date of Fee Submission : </label>" .
+                        <label>शुल्क जमा करने की अंतिम तिथि/<br>Last Date of Fee Submission : </label>" .
                     $last_date_to_pay .
                     "
                         <input type='hidden' name='training_details' class='form-control' placeholder='$last_date_to_pay' disabled />
@@ -317,7 +318,7 @@ if (isset($_SESSION["user_id"])) {
                         <input type='hidden' name='remarks' class='form-control' placeholder='$remark' disabled/>
                         </div>";
 			echo "<div>
-                        <label>समय/Application Created Time : </label>" .
+                        <label>आवेदन का समय/Application Created Time : </label>" .
                 $fetch5["time_created"].
                 "
                         <input type='hidden' name='remarks' class='form-control' placeholder='$remark' disabled/>
@@ -433,7 +434,7 @@ if (isset($_SESSION["user_id"])) {
 //         }
 //     }
 // } 
-    echo "<hr><hr><br>";
+    echo "<br><hr><br>";
     echo "<input type = 'hidden' name='application' value =$application_id  class = 'hidden' />";
     echo "<div id='fb_review_id'>
     <label> प्रशिक्षण प्रतिपुष्टि/Training Feedback :</label>
