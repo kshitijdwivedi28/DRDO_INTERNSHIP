@@ -58,7 +58,7 @@ if (isset($_SESSION["user_id"])) {
             $mobileNo = $fetch6["mobile_no"];
             $dob = $fetch6["dob"];
             $pin = $fetch6["pin_dop_pis"];
-            $emailID = $fetch6["drona_email_id"];
+            $internet_email_id = $fetch6["drona_email_id"];
             $gender = $fetch6["gender"];
             $qualification = $fetch6["qualification"];
             $research_paper = $fetch6["research_paper"];
@@ -171,9 +171,9 @@ if (isset($_SESSION["user_id"])) {
                         </div>";
             echo "<div>
                         <label>ईमेल आईडी/Email ID : </label>" .
-                $emailID .
+                $internet_email_id .
                 "
-                        <input type='hidden' name='training_details' class='form-control' placeholder='$emailID' disabled />
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
                         </div>";
             echo "<div>
                         <label>लिंग/Gender : </label>" .

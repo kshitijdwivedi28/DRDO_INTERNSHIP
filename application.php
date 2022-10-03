@@ -48,7 +48,7 @@ if(isset($_SESSION['user_id'])){
                 $mobileNo=$fetch4['mobile_no'];
                 $dob=$fetch4['dob'];
                 $pin=$fetch4['pin_dop_pis'];
-                $emailID=$fetch4['drona_email_id'];
+                $internet_email_id=$fetch4['drona_email_id'];
                 $gender=$fetch4['gender'];
                 $qualification=$fetch4['qualification'];
                 $cheque=$fetch4['cheque_in_favour'];
@@ -111,8 +111,8 @@ if(isset($_SESSION['user_id'])){
                         <input type='hidden' name='training_details' class='form-control' placeholder='$pin' disabled />
                         </div>";
                 echo "<div>
-                        <label>ईमेल आईडी/Email ID : </label>".$emailID."
-                        <input type='hidden' name='training_details' class='form-control' placeholder='$emailID' disabled />
+                        <label>ईमेल आईडी/Email ID : </label>".$internet_email_id."
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
                         </div>";
                
                 echo "<div>
@@ -282,7 +282,7 @@ $result =Mysqli_query($conn,$query);
                 $mobileNo=$fetch4['mobile_no'];
                 $dob=$fetch4['dob'];
                 $pin=$fetch4['pin_dop_pis'];
-                $emailID=$fetch4['drona_email_id'];
+                $internet_email_id=$fetch4['drona_email_id'];
                 $gender=$fetch4['gender'];
                 $qualification=$fetch4['qualification'];
                 $cheque=$fetch4['cheque_in_favour'];
@@ -349,8 +349,8 @@ $result =Mysqli_query($conn,$query);
                 <input type='hidden' name='training_details' class='form-control' placeholder='$pin' disabled />
                 </div>";
         echo "<div>
-                <label>ईमेल आईडी/Email ID : </label>".$emailID."
-                <input type='hidden' name='training_details' class='form-control' placeholder='$emailID' disabled />
+                <label>ईमेल आईडी/Email ID : </label>".$internet_email_id."
+                <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
                 </div>";
        
         echo "<div>
@@ -523,7 +523,7 @@ $result =Mysqli_query($conn,$query);
                 $mobileNo=$fetch4['mobile_no'];
                 $dob=$fetch4['dob'];
                 $pin=$fetch4['pin_dop_pis'];
-                $emailID=$fetch4['drona_email_id'];
+                $internet_email_id=$fetch4['drona_email_id'];
                 $gender=$fetch4['gender'];
                 $qualification=$fetch4['qualification'];
                 $cheque=$fetch4['cheque_in_favour'];
@@ -591,8 +591,8 @@ $result =Mysqli_query($conn,$query);
                         <input type='hidden' name='training_details' class='form-control' placeholder='$pin' disabled />
                         </div>";
                 echo "<div>
-                        <label>ईमेल आईडी/Email ID : </label>".$emailID."
-                        <input type='hidden' name='training_details' class='form-control' placeholder='$emailID' disabled />
+                        <label>ईमेल आईडी/Email ID : </label>".$internet_email_id."
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
                         </div>";
                
                 echo "<div>
@@ -773,7 +773,7 @@ $result =Mysqli_query($conn,$query);
                 $mobileNo=$fetch4['mobile_no'];
                 $dob=$fetch4['dob'];
                 $pin=$fetch4['pin_dop_pis'];
-                $emailID=$fetch4['drona_email_id'];
+                $internet_email_id=$fetch4['drona_email_id'];
                 $gender=$fetch4['gender'];
                 $qualification=$fetch4['qualification'];
                 $cheque=$fetch4['cheque_in_favour'];
@@ -843,8 +843,8 @@ $result =Mysqli_query($conn,$query);
                 <input type='hidden' name='training_details' class='form-control' placeholder='$pin' disabled />
                 </div>";
         echo "<div>
-                <label>ईमेल आईडी/Email ID : </label>".$emailID."
-                <input type='hidden' name='training_details' class='form-control' placeholder='$emailID' disabled />
+                <label>ईमेल आईडी/Email ID : </label>".$internet_email_id."
+                <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
                 </div>";
        
         echo "<div>
