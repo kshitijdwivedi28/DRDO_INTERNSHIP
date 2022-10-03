@@ -3,8 +3,8 @@ require_once "conn.php";
 session_start();
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
-    $password = md5($_POST["password"]);
-	//$password = ($_POST["password"]);
+    //$password = md5($_POST["password"]);
+	$password = ($_POST["password"]);
 
     ($query = mysqli_query(
         $conn,
