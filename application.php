@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <?php
@@ -8,16 +7,19 @@
     } 
 ?>
 <img src="Images/bg1.jpg" alt="backgorund" class="background">
+
 <head>
-<title>Training Application</title>
-<link rel="stylesheet" type="text/css" href="css/style1.css">
-<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Training Application</title>
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1" />
 </head>
-<body><section>
+
+<body>
+    <section>
         <img src="Images/Header.png" alt="backgorund" class="headerpic">
-        </section>
-<div class="form">
-<?php
+    </section>
+    <div class="form">
+        <?php
 require_once 'conn.php';
 if(isset($_SESSION['user_id'])){
     $user_ID = $_SESSION['user_id'];
@@ -28,11 +30,11 @@ if(isset($_SESSION['user_id'])){
         echo "आवेदन संख्या/Application No : ".$application_id;
 
 ?>
-            <form method="POST" action="adaction.php">
+        <form method="POST" action="adaction.php">
             <fieldset>
-                
-            <legend style="text-transform: uppercase; font-size: 1.6em">प्रशिक्षण प्रपत्र/Training form</legend>
-            <?php
+
+                <legend style="text-transform: uppercase; font-size: 1.6em">प्रशिक्षण प्रपत्र/Training form</legend>
+                <?php
                 require'conn.php';
                 $query3 = mysqli_query($conn,"SELECT * FROM `application` WHERE application_id=$application_id");
                 $fetch3 = mysqli_fetch_array($query3);
@@ -48,7 +50,8 @@ if(isset($_SESSION['user_id'])){
                 $mobileNo=$fetch4['mobile_no'];
                 $dob=$fetch4['dob'];
                 $pin=$fetch4['pin_dop_pis'];
-                $internet_email_id=$fetch4['drona_email_id'];
+                $internet_email_id = $fetch4["internet_email_id"];
+                $drona_email_id = $fetch4["drona_email_id"];
                 $gender=$fetch4['gender'];
                 $qualification=$fetch4['qualification'];
                 $cheque=$fetch4['cheque_in_favour'];
@@ -111,10 +114,13 @@ if(isset($_SESSION['user_id'])){
                         <input type='hidden' name='training_details' class='form-control' placeholder='$pin' disabled />
                         </div>";
                 echo "<div>
-                        <label>ईमेल आईडी/Email ID : </label>".$internet_email_id."
+                        <label>इंटरनेट ईमेल आईडी/Internet Email ID : </label>".$internet_email_id."
                         <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
                         </div>";
-               
+                echo "<div>
+                        <label>द्रोणा ईमेल आईडी/DRONA Email ID : </label>" .$drona_email_id."
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$drona_email_id' disabled />
+                        </div>";
                 echo "<div>
                         <label>योग्यता/Qualification : </label>".$qualification."
                         <input type='hidden' name='training_details' class='form-control' placeholder='$qualification' disabled />
@@ -204,33 +210,33 @@ ORDER BY `end_date` DESC  LIMIT 5 ";
 
 $result =Mysqli_query($conn,$query);
 ?>
-        <br>
-        <table  width="100%" border="1">
-            <tr>
-            <th colspan="4" style="color:#FF0000">पिछला प्रशिक्षण/Previous Training</th>
-                           </tr>
-                                <t>
-                                   <th width="25%" style="color:#FF0000">प्रशिक्षण शीर्षक/Training Title</th>
-                                   <th width="25%" style="color:#FF0000">प्रशिक्षण प्रकार/Training Type</th>
-                                   <th width="25%" style="color:#FF0000">आरंभ करने की तिथि/From Date</th>
-                                   <th width="25%" style="color:#FF0000">अंतिम तिथि/To Date</th>
-                                </t>
-        <?php
+                <br>
+                <table width="100%" border="1">
+                    <tr>
+                        <th colspan="4" style="color:#FF0000">पिछला प्रशिक्षण/Previous Training</th>
+                    </tr>
+                    <t>
+                        <th width="25%" style="color:#FF0000">प्रशिक्षण शीर्षक/Training Title</th>
+                        <th width="25%" style="color:#FF0000">प्रशिक्षण प्रकार/Training Type</th>
+                        <th width="25%" style="color:#FF0000">आरंभ करने की तिथि/From Date</th>
+                        <th width="25%" style="color:#FF0000">अंतिम तिथि/To Date</th>
+                    </t>
+                    <?php
             while($row=mysqli_fetch_assoc($result)){
-        ?>  
-            <tr >
-                <td width="25%"><?php echo $row['training_title']; ?></td>
-                <td width="25%"><?php echo $row['training_type']; ?></td>
-                <td width="25%"><?php echo $row['start_date']; ?></td>
-                <td width="25%"><?php echo $row['end_date']; ?></td>
-            </tr>
-        <?php 
+        ?>
+                    <tr>
+                        <td width="25%"><?php echo $row['training_title']; ?></td>
+                        <td width="25%"><?php echo $row['training_type']; ?></td>
+                        <td width="25%"><?php echo $row['start_date']; ?></td>
+                        <td width="25%"><?php echo $row['end_date']; ?></td>
+                    </tr>
+                    <?php 
         }
         ?>
-        </table>
-        <br/>
-        <br/>
-            <?php
+                </table>
+                <br />
+                <br />
+                <?php
             echo "<input type='hidden' name='application' class='form-control'  value='$application_id' required/>";
                 
             echo "<div>
@@ -248,9 +254,9 @@ $result =Mysqli_query($conn,$query);
             ?>
 
 
-            <br><br>
+                <br><br>
                 <button name="login">जमा करें/<br>submit</button>
-            </legend>
+                </legend>
             </fieldset>
         </form>
         <?php
@@ -262,11 +268,11 @@ $result =Mysqli_query($conn,$query);
         echo "आवेदन संख्या/Application No : ".$application_id;
 
 ?>
-            <form method="POST" action="ghtcpaction.php">
+        <form method="POST" action="ghtcpaction.php">
             <fieldset>
-                
-            <legend style="text-transform: uppercase; font-size: 1.6em">प्रशिक्षण प्रपत्र/Training form</legend>
-            <?php
+
+                <legend style="text-transform: uppercase; font-size: 1.6em">प्रशिक्षण प्रपत्र/Training form</legend>
+                <?php
                 require'conn.php';
                 $query3 = mysqli_query($conn,"SELECT * FROM `application` WHERE application_id=$application_id");
                 $fetch3 = mysqli_fetch_array($query3);
@@ -282,7 +288,8 @@ $result =Mysqli_query($conn,$query);
                 $mobileNo=$fetch4['mobile_no'];
                 $dob=$fetch4['dob'];
                 $pin=$fetch4['pin_dop_pis'];
-                $internet_email_id=$fetch4['drona_email_id'];
+                $internet_email_id = $fetch4["internet_email_id"];
+                $drona_email_id = $fetch4["drona_email_id"];
                 $gender=$fetch4['gender'];
                 $qualification=$fetch4['qualification'];
                 $cheque=$fetch4['cheque_in_favour'];
@@ -349,9 +356,13 @@ $result =Mysqli_query($conn,$query);
                 <input type='hidden' name='training_details' class='form-control' placeholder='$pin' disabled />
                 </div>";
         echo "<div>
-                <label>ईमेल आईडी/Email ID : </label>".$internet_email_id."
-                <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
-                </div>";
+                        <label>इंटरनेट ईमेल आईडी/Internet Email ID : </label>".$internet_email_id."
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
+                        </div>";
+                echo "<div>
+                        <label>द्रोणा ईमेल आईडी/DRONA Email ID : </label>" .$drona_email_id."
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$drona_email_id' disabled />
+                        </div>";
        
         echo "<div>
                 <label>योग्यता/Qualification : </label>".$qualification."
@@ -436,33 +447,33 @@ $userId =  $_SESSION['user_id'];
 $query ="SELECT * from `training_details` WHERE `user_id`=$user  AND `is_confirmed`='yes' ORDER BY `end_date` DESC  LIMIT 5 ";
 $result =Mysqli_query($conn,$query);
 ?>
-        <br>
-        <table  width="100%" border="1">
-            <tr>
-            <th colspan="4" style="color:#FF0000">पिछला प्रशिक्षण/Previous Training</th>
-                           </tr>
-                                <t>
-                                   <th width="25%" style="color:#FF0000">प्रशिक्षण शीर्षक/Training Title</th>
-                                   <th width="25%" style="color:#FF0000">प्रशिक्षण प्रकार/Training Type</th>
-                                   <th width="25%" style="color:#FF0000">आरंभ करने की तिथि/From Date</th>
-                                   <th width="25%" style="color:#FF0000">अंतिम तिथि/To Date</th>
-                                </t>
-        <?php
+                <br>
+                <table width="100%" border="1">
+                    <tr>
+                        <th colspan="4" style="color:#FF0000">पिछला प्रशिक्षण/Previous Training</th>
+                    </tr>
+                    <t>
+                        <th width="25%" style="color:#FF0000">प्रशिक्षण शीर्षक/Training Title</th>
+                        <th width="25%" style="color:#FF0000">प्रशिक्षण प्रकार/Training Type</th>
+                        <th width="25%" style="color:#FF0000">आरंभ करने की तिथि/From Date</th>
+                        <th width="25%" style="color:#FF0000">अंतिम तिथि/To Date</th>
+                    </t>
+                    <?php
             while($row=mysqli_fetch_assoc($result)){
-        ?>  
-            <tr >
-                <td width="25%"><?php echo $row['training_title']; ?></td>
-                <td width="25%"><?php echo $row['training_type']; ?></td>
-                <td width="25%"><?php echo $row['start_date']; ?></td>
-                <td width="25%"><?php echo $row['end_date']; ?></td>
-            </tr>
-        <?php 
+        ?>
+                    <tr>
+                        <td width="25%"><?php echo $row['training_title']; ?></td>
+                        <td width="25%"><?php echo $row['training_type']; ?></td>
+                        <td width="25%"><?php echo $row['start_date']; ?></td>
+                        <td width="25%"><?php echo $row['end_date']; ?></td>
+                    </tr>
+                    <?php 
         }
         ?>
-        </table>
-        <br/>
-        <br/>
-            <?php
+                </table>
+                <br />
+                <br />
+                <?php
             echo "<div>
             <label>विभाग एडी टिप्पणी/Group AD Remarks : </label>".$adremark."
             <input type='hidden' name='remarks' class='form-control' placeholder='$adremark' disabled/>
@@ -489,9 +500,9 @@ $result =Mysqli_query($conn,$query);
             ?>
 
 
-            <br><br>
+                <br><br>
                 <button name="login">जमा करें/<br>submit</button>
-            </legend>
+                </legend>
             </fieldset>
         </form>
         <?php
@@ -503,11 +514,11 @@ $result =Mysqli_query($conn,$query);
         echo "आवेदन संख्या/Application No : ".$application_id;
 
 ?>
-            <form method="POST" action="adtcpaction.php">
+        <form method="POST" action="adtcpaction.php">
             <fieldset>
-                
-            <legend style="text-transform: uppercase; font-size: 1.6em">प्रशिक्षण प्रपत्र/Training form</legend>
-            <?php
+
+                <legend style="text-transform: uppercase; font-size: 1.6em">प्रशिक्षण प्रपत्र/Training form</legend>
+                <?php
                 require'conn.php';
                 $query3 = mysqli_query($conn,"SELECT * FROM `application` WHERE application_id=$application_id");
                 $fetch3 = mysqli_fetch_array($query3);
@@ -523,7 +534,8 @@ $result =Mysqli_query($conn,$query);
                 $mobileNo=$fetch4['mobile_no'];
                 $dob=$fetch4['dob'];
                 $pin=$fetch4['pin_dop_pis'];
-                $internet_email_id=$fetch4['drona_email_id'];
+                $internet_email_id = $fetch4["internet_email_id"];
+                $drona_email_id = $fetch4["drona_email_id"];
                 $gender=$fetch4['gender'];
                 $qualification=$fetch4['qualification'];
                 $cheque=$fetch4['cheque_in_favour'];
@@ -591,8 +603,12 @@ $result =Mysqli_query($conn,$query);
                         <input type='hidden' name='training_details' class='form-control' placeholder='$pin' disabled />
                         </div>";
                 echo "<div>
-                        <label>ईमेल आईडी/Email ID : </label>".$internet_email_id."
+                        <label>इंटरनेट ईमेल आईडी/Internet Email ID : </label>".$internet_email_id."
                         <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
+                        </div>";
+                echo "<div>
+                        <label>द्रोणा ईमेल आईडी/DRONA Email ID : </label>" .$drona_email_id."
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$drona_email_id' disabled />
                         </div>";
                
                 echo "<div>
@@ -678,33 +694,33 @@ $userId =  $_SESSION['user_id'];
 $query ="SELECT * from `training_details` WHERE `user_id`=$user  AND `is_confirmed`='yes' ORDER BY `end_date` DESC  LIMIT 5 ";
 $result =Mysqli_query($conn,$query);
 ?>
-        <br>
-        <table  width="100%" border="1">
-            <tr>
-            <th colspan="4" style="color:#FF0000">पिछला प्रशिक्षण/Previous Training</th>
-                           </tr>
-                                <t>
-                                   <th width="25%" style="color:#FF0000">प्रशिक्षण शीर्षक/Training Title</th>
-                                   <th width="25%" style="color:#FF0000">प्रशिक्षण प्रकार/Training Type</th>
-                                   <th width="25%" style="color:#FF0000">आरंभ करने की तिथि/From Date</th>
-                                   <th width="25%" style="color:#FF0000">अंतिम तिथि/To Date</th>
-                                </t>
-        <?php
+                <br>
+                <table width="100%" border="1">
+                    <tr>
+                        <th colspan="4" style="color:#FF0000">पिछला प्रशिक्षण/Previous Training</th>
+                    </tr>
+                    <t>
+                        <th width="25%" style="color:#FF0000">प्रशिक्षण शीर्षक/Training Title</th>
+                        <th width="25%" style="color:#FF0000">प्रशिक्षण प्रकार/Training Type</th>
+                        <th width="25%" style="color:#FF0000">आरंभ करने की तिथि/From Date</th>
+                        <th width="25%" style="color:#FF0000">अंतिम तिथि/To Date</th>
+                    </t>
+                    <?php
             while($row=mysqli_fetch_assoc($result)){
-        ?>  
-            <tr >
-                <td width="25%"><?php echo $row['training_title']; ?></td>
-                <td width="25%"><?php echo $row['training_type']; ?></td>
-                <td width="25%"><?php echo $row['start_date']; ?></td>
-                <td width="25%"><?php echo $row['end_date']; ?></td>
-            </tr>
-        <?php 
+        ?>
+                    <tr>
+                        <td width="25%"><?php echo $row['training_title']; ?></td>
+                        <td width="25%"><?php echo $row['training_type']; ?></td>
+                        <td width="25%"><?php echo $row['start_date']; ?></td>
+                        <td width="25%"><?php echo $row['end_date']; ?></td>
+                    </tr>
+                    <?php 
         }
         ?>
-        </table>
-        <br/>
-        <br/>
-            <?php
+                </table>
+                <br />
+                <br />
+                <?php
             echo "<div>
             <label>विभाग एडी टिप्पणी/Group AD Remarks : </label>".$adremark."
             <input type='hidden' name='remarks' class='form-control' placeholder='$adremark' disabled/>
@@ -739,9 +755,9 @@ $result =Mysqli_query($conn,$query);
             ?>
 
 
-            <br><br>
+                <br><br>
                 <button name="login">जमा करें/<br>submit</button>
-            </legend>
+                </legend>
             </fieldset>
         </form>
         <?php
@@ -753,11 +769,11 @@ $result =Mysqli_query($conn,$query);
         echo "आवेदन संख्या/Application No : ".$application_id;
 
 ?>
-            <form method="POST" action="director.php">
+        <form method="POST" action="director.php">
             <fieldset>
-                
-            <legend style="text-transform: uppercase; font-size: 1.6em">प्रशिक्षण प्रपत्र/Training form</legend>
-            <?php
+
+                <legend style="text-transform: uppercase; font-size: 1.6em">प्रशिक्षण प्रपत्र/Training form</legend>
+                <?php
                 require'conn.php';
                 $query3 = mysqli_query($conn,"SELECT * FROM `application` WHERE application_id=$application_id");
                 $fetch3 = mysqli_fetch_array($query3);
@@ -773,7 +789,8 @@ $result =Mysqli_query($conn,$query);
                 $mobileNo=$fetch4['mobile_no'];
                 $dob=$fetch4['dob'];
                 $pin=$fetch4['pin_dop_pis'];
-                $internet_email_id=$fetch4['drona_email_id'];
+                $internet_email_id = $fetch4["internet_email_id"];
+                $drona_email_id = $fetch4["drona_email_id"];
                 $gender=$fetch4['gender'];
                 $qualification=$fetch4['qualification'];
                 $cheque=$fetch4['cheque_in_favour'];
@@ -843,9 +860,13 @@ $result =Mysqli_query($conn,$query);
                 <input type='hidden' name='training_details' class='form-control' placeholder='$pin' disabled />
                 </div>";
         echo "<div>
-                <label>ईमेल आईडी/Email ID : </label>".$internet_email_id."
-                <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
-                </div>";
+                        <label>इंटरनेट ईमेल आईडी/Internet Email ID : </label>".$internet_email_id."
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
+                        </div>";
+                echo "<div>
+                        <label>द्रोणा ईमेल आईडी/DRONA Email ID : </label>" .$drona_email_id."
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$drona_email_id' disabled />
+                        </div>";
        
         echo "<div>
                 <label>योग्यता/Qualification : </label>".$qualification."
@@ -930,33 +951,33 @@ $userId =  $_SESSION['user_id'];
 $query ="SELECT * from `training_details` WHERE `user_id`=$user  AND `is_confirmed`='yes' ORDER BY `end_date` DESC  LIMIT 5 ";
 $result =Mysqli_query($conn,$query);
 ?>
-        <br>
-        <table  width="100%" border="1">
-            <tr>
-                <th colspan="4" style="color:#FF0000">पिछला प्रशिक्षण/Previous Training</th>
-                           </tr>
-                                <t>
-                                   <th width="25%" style="color:#FF0000">प्रशिक्षण शीर्षक/Training Title</th>
-                                   <th width="25%" style="color:#FF0000">प्रशिक्षण प्रकार/Training Type</th>
-                                   <th width="25%" style="color:#FF0000">आरंभ करने की तिथि/From Date</th>
-                                   <th width="25%" style="color:#FF0000">अंतिम तिथि/To Date</th>
-                                </t>
-        <?php
+                <br>
+                <table width="100%" border="1">
+                    <tr>
+                        <th colspan="4" style="color:#FF0000">पिछला प्रशिक्षण/Previous Training</th>
+                    </tr>
+                    <t>
+                        <th width="25%" style="color:#FF0000">प्रशिक्षण शीर्षक/Training Title</th>
+                        <th width="25%" style="color:#FF0000">प्रशिक्षण प्रकार/Training Type</th>
+                        <th width="25%" style="color:#FF0000">आरंभ करने की तिथि/From Date</th>
+                        <th width="25%" style="color:#FF0000">अंतिम तिथि/To Date</th>
+                    </t>
+                    <?php
             while($row=mysqli_fetch_assoc($result)){
-        ?>  
-            <tr >
-                <td width="25%"><?php echo $row['training_title']; ?></td>
-                <td width="25%"><?php echo $row['training_type']; ?></td>
-                <td width="25%"><?php echo $row['start_date']; ?></td>
-                <td width="25%"><?php echo $row['end_date']; ?></td>
-            </tr>
-        <?php 
+        ?>
+                    <tr>
+                        <td width="25%"><?php echo $row['training_title']; ?></td>
+                        <td width="25%"><?php echo $row['training_type']; ?></td>
+                        <td width="25%"><?php echo $row['start_date']; ?></td>
+                        <td width="25%"><?php echo $row['end_date']; ?></td>
+                    </tr>
+                    <?php 
         }
         ?>
-        </table>
-        <br/>
-        <br/>
-            <?php
+                </table>
+                <br />
+                <br />
+                <?php
             echo "<div>
             <label>विभाग एडी टिप्पणी/Group AD Remarks : </label>".$adremark."
             <input type='hidden' name='remarks' class='form-control' placeholder='$adremark' disabled/>
@@ -1002,9 +1023,9 @@ $result =Mysqli_query($conn,$query);
             ?>
 
 
-            <br><br>
+                <br><br>
                 <button name="login">जमा करें/<br>submit</button>
-            </legend>
+                </legend>
             </fieldset>
         </form>
         <?php
@@ -1017,8 +1038,8 @@ $result =Mysqli_query($conn,$query);
     
 }
 ?>
-    
+
     </div>
 </body>
-</html>
 
+</html>
