@@ -64,7 +64,7 @@ if (!isset($_SESSION["user_id"])) {
 
                 <t>
                     <table id="myTable" width="100%" border="1">
-                        <th style="color:#cc0000">आवेदन संख्या/<br>Application Id</th>
+                        <th style="color:#cc0000">आवेदन संख्या/<br>Application ID</th>
                         <th style="color:#cc0000">आवेदक का नाम/<br>Applicant Name</th>
                         <th style="color:#cc0000">पद/<br>Designation</th>
                         <th style="color:#cc0000">लिंग/<br>Gender</th>

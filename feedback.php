@@ -230,11 +230,12 @@ if (!isset($_SESSION["user_id"])) {
                 </table>
                 <br><br>
                 </legend>
-                <button style="margin-left : 625px" ; name="login">विवरण देखें/Provide Feedback</button>
+                <button style="margin-left : 625px" ; name="login">विवरण देखें/<br>Provide Feedback</button>
             </fieldset>
         </form>
         <script>
         alert('Please provide the feedback of your past training');
+
         function myFunction() {
             // Declare variables
             var input, filter, table, tr, td, i, txtValue;
