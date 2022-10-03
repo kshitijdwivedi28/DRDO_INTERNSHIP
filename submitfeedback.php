@@ -175,13 +175,13 @@ if (isset($_SESSION["user_id"])) {
                         <label>इंटरनेट ईमेल आईडी/Internet Email ID : </label>" .
                 $internet_email_id .
                 "
-                        <input type='hidden' name='training_details' class='form-control' placeholder='$internet_emailID' disabled />
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$internet_email_id' disabled />
                         </div>";
             echo "<div>
                         <label>द्रोणा ईमेल आईडी/DRONA Email ID : </label>" .
                 $drona_email_id.
                 "
-                        <input type='hidden' name='training_details' class='form-control' placeholder='$drona_emailID' disabled />
+                        <input type='hidden' name='training_details' class='form-control' placeholder='$drona_email_id' disabled />
                         </div>";
             echo "<div>
                         <label>लिंग/Gender : </label>" .
