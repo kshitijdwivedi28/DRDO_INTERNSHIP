@@ -64,15 +64,15 @@ if (!isset($_SESSION["user_id"])) {
                 echo "<div>
                 <label>प्रशिक्षण प्ररूप/Training Type :<span style = 'color : red'>*</span></label>
                 <select name='trainingtype' id='Type of operation'>
-                <option value='Webinar'>Webinar</option>
+                <option value='confrence'>Conference</option>
+				<option value='Webinar'>Webinar</option>
                 <option value='Workshop'>Workshop</option>
                 <option value='Exhibition'>Exhibition</option>
                 <option value='MDP'>MDP</option>
                 <option value='CEP'>CEP</option>
                 <option value='Training'>Training</option>
                 <option value='Symposium'>Symposium</option>
-                <option value='confrence'>Conference</option>
-				<option value='seminar'>Seminar</option>
+                <option value='seminar'>Seminar</option>
                 <option value='others'>Others</option>
                 </select>
                 </div>";
@@ -106,7 +106,7 @@ if (!isset($_SESSION["user_id"])) {
                         <input type='date' id='edate' name='trainingenddetails' onchange='myChangeFunction()' class='form-control'required />
                         </div>";
 
-                echo "<div>
+                echo "<div id='paper_title'>
                          <label>क्या आप पत्र/पेपर प्रस्तुति के लिए जा रहे हैं?<br>Are you going for Paper presentation? :<span style = 'color : red'>*</span></label>
                          <input type='Radio' name='Researchpaper' value='YES'>हां/YES
                          <input type='Radio' name='Researchpaper' value='NO' checked='checked'>नहीं/NO
@@ -196,7 +196,7 @@ if (!isset($_SESSION["user_id"])) {
                     var check = document.getElementById('paper_title');
                     if (this.value === 'others') {
                         other.classList.remove("hidden");
-                    } else if (this.value === 'Confrence' || this.value === 'Exhibition' || this.value ===
+                    } else if (this.value === 'confrence' || this.value === 'Exhibition' || this.value ===
                         'Symposium') {
                         check.classList.remove("hidden");
                     } else {
