@@ -83,7 +83,7 @@ if (!isset($_SESSION["user_id"])) {
 
                     <?php
         } elseif (
-            $_SESSION["user_id"] == 230 &&
+            ($_SESSION["user_id"] == 230 ||$_SESSION["user_id"] == 292) &&
             $row["head_tcp_hr"] == 0 &&
             $row["ad_gh_review"] == 1 &&
             $row["ad_status"] == "RECOMMENDED"
@@ -120,7 +120,7 @@ if (!isset($_SESSION["user_id"])) {
 
                     <?php
         } elseif (
-            $_SESSION["user_id"] == 114 &&
+            ($_SESSION["user_id"] == 114||$_SESSION["user_id"] == 293) &&
             $row["ad_tcp_hr"] == 0 &&
             $row["head_tcp_hr"] == 1 &&
             $row["head_tcp_hr_status"] == "RECOMMENDED"
@@ -157,7 +157,7 @@ if (!isset($_SESSION["user_id"])) {
 
                     <?php
         } elseif (
-            $_SESSION["user_id"] == 264 &&
+            $_SESSION["user_id"] == 130 &&
             $row["director"] == 0 &&
             $row["ad_tcp_hr"] == 1 &&
             $row["ad_tcp_hr_status"] == "RECOMMENDED"
